@@ -3,7 +3,8 @@ import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Image, 
+import { Image,
+         TouchableOpacity, 
          StyleSheet, 
        } from 'react-native';
 import logo from './assets/images/logo.jpg';
@@ -15,18 +16,31 @@ function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.instructions}>RunSik</Text>
       <Image source={require('./assets/images/logo.jpg')} style={styles.logo}/>
-      <Button style={styles.button}  title="Iniciar" onPress={() => navigation.navigate('Main')} />
-    </View>  
+      <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.button}>
+        <Text style={styles.buttonText}>Iniciar</Text>
+      </TouchableOpacity>  
+    </View>
   );
-}
+} 
 
 function MainScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={styles.instructions}>Que hacemos..?</Text>
-      <Button title="Escuchar Musica" onPress={() => navigation.navigate('Play')} />
-      <Button title="Comenzar Carrera" onPress={() => navigation.navigate('Run')} />
-      <Button title="Home" onPress={() => navigation.popToTop()} />
+      <TouchableOpacity onPress={() => navigation.navigate('Play')} style={styles.button}>
+        <Text style={styles.buttonText}>Escuchar Música</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Run')} style={styles.button}>
+        <Text style={styles.buttonText}>Comenzar Carrera</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.popToTop()} style={styles.button}>
+        <Text style={styles.buttonText}>Home</Text>
+      </TouchableOpacity>
+
+
+      {/* <Button style={styles.button} title="Escuchar Musica" onPress={() => navigation.navigate('Play')} />  */}
+      {/* <Button style={styles.button} title="Comenzar Carrera" onPress={() => navigation.navigate('Run')} /> */}
+      {/* <Button style={styles.button} title="Home" onPress={() => navigation.popToTop()} /> */}
     </View>
   );
 }
@@ -80,19 +94,22 @@ logo:{
     marginBottom:10,
 },
 instructions:{
-    color: '#888',
+    color: '#4A8B05',
     fontSize: 30,
     marginHorizontal:15,
 },
 button: {
-    backgroundColor: "#668343",
-    padding: 20,
-    borderRadius: 5,
+    backgroundColor: "#BADF99",
+    padding: 10,
+    width:140,
+    height:60,
+    borderRadius: 10,
+    margin: 10,
 },
 buttonText: {
-    borderRadius: 20,
-    fontSize: 20,
-    color: 'green',
+    fontSize: 15,
+    color: '#050505',
+    textAlign: 'center',
 },
 footer:{
     color: '#852A52',
